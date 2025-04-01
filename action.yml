@@ -14,11 +14,10 @@ runs:
       with:
         dotnet-version: '7.0.x'
 
-    - name: Create Project Directory
+    - name: Clone Action Repository
       shell: bash
       run: |
-        mkdir -p /tmp/print-pr-action
-        cp -r . /tmp/print-pr-action/
+        git clone https://github.com/${{ github.repository }}.git /tmp/print-pr-action
 
     - name: Build and Publish
       shell: bash
