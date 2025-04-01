@@ -17,9 +17,11 @@ jobs:
       - uses: actions/checkout@v4
       
       - name: Print Pull Request Info
-        uses: your-username/print-pull-request@v1
+        uses: david-zoltan/UHo-TG3-WLU@main
         with:
           pr_number: ${{ github.event.pull_request.number }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
 
 ## Inputs
@@ -27,6 +29,12 @@ jobs:
 | Input | Description | Required |
 |-------|-------------|----------|
 | `pr_number` | The number of the pull request to analyze | true |
+
+## Environment Variables
+
+| Variable | Description | Required |
+|----------|-------------|----------|
+| `GITHUB_TOKEN` | GitHub token for API authentication | true |
 
 ## Output
 

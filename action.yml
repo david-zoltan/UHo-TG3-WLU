@@ -29,6 +29,8 @@ runs:
       shell: bash
       env:
         PR_NUMBER: ${{ inputs.pr_number }}
+        GITHUB_TOKEN: ${{ github.token }}
+        GITHUB_REPOSITORY: ${{ github.repository }}
       run: |
         /tmp/print-pr-action/bin/Release/net7.0/linux-x64/publish/PrintPullRequest 
         fi
