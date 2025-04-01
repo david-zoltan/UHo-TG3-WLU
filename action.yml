@@ -17,7 +17,7 @@ runs:
     - name: Clone Action Repository
       shell: bash
       run: |
-        git clone https://github.com/UHo-TG3-WLU/print-pull-request.git /tmp/print-pr-action
+        git clone https://x-access-token:${{ github.token }}@github.com/UHo-TG3-WLU/print-pull-request.git /tmp/print-pr-action
 
     - name: Build and Publish
       shell: bash
@@ -31,4 +31,4 @@ runs:
         PR_NUMBER: ${{ inputs.pr_number }}
       run: |
         /tmp/print-pr-action/bin/Release/net7.0/linux-x64/publish/PrintPullRequest 
-        fi 
+        fi
