@@ -1,0 +1,27 @@
+name: Print Context Info
+
+on:
+  workflow_call:
+    secrets:
+      GH_TOKEN:
+        required: true
+
+jobs:
+  print:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🖨️ Print GitHub context
+        run: echo '${{ toJson(github) }}'
+
+      - name: 🖨️ Print Job context
+        run: echo '${{ toJson(job) }}'
+
+      - name: 🖨️ Print Runner context
+        run: echo '${{ toJson(runner) }}'
+
+      - name: 🖨️ Print Steps context
+        run: echo '${{ toJson(steps) }}'
+
+      - name: 🖨️ Print Inputs (if any)
+        run: |
+          echo "Inputs not defined in this example."
