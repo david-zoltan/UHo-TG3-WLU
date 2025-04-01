@@ -1,0 +1,28 @@
+name: 'Print Pull Request'
+description: 'Prints pull request information and diffs using C#'
+
+inputs:
+  pr_number:
+    description: 'Pull request number'
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '7.0.x'
+
+    - name: Build and Publish
+      shell: bash
+      run: |
+        dotnet publish -c Release -r linux-x64 --self-contained true
+
+    - name: Run Pull Request Info
+      shell: bash
+      env:
+        PR_NUMBER: ${{ inputs.pr_number }}
+      run: |
+        ./bin/Release/net7.0/linux-x64/publish/PrintPullRequest 
+        fi 
