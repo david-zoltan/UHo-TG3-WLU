@@ -70,14 +70,13 @@ class Program
                 Console.WriteLine($"Deletions: {file.Deletions}");
                 Console.WriteLine($"Changes: {file.Changes}");
                 
-                // Get the diff content
-                var diff = await client.PullRequest.Get(owner, repo, int.Parse(prNumber), new PullRequestRequest
-                {
-                    Diff = true
-                });
+                // Get the diff content using the raw diff URL
+                var diffUrl = $"https://api.github.com/repos/{owner}/{repo}/pulls/{prNumber}/files/{file.FileName}";
+                var diffResponse = await client.Connection.Get<object>(new Uri(diffUrl), new Dictionary<string, string>());
+                var diffContent = diffResponse.Body.ToString();
                 
                 Console.WriteLine("\nDiff:");
-                Console.WriteLine(diff.Diff);
+                Console.WriteLine(diffContent);
             }
         }
         catch (Exception ex)
