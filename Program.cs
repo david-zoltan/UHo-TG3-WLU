@@ -72,6 +72,10 @@ class Program
                 
                 // Get the diff content using the raw diff URL
                 var diffUrl = $"https://api.github.com/repos/{owner}/{repo}/pulls/{prNumber}/files/{file.FileName}";
+
+                Debug.WriteLine($"diff url: {diffUrl}");
+
+
                 var diffResponse = await client.Connection.Get<object>(new Uri(diffUrl), new Dictionary<string, string>());
                 var diffContent = diffResponse.Body.ToString();
                 
