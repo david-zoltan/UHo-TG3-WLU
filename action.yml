@@ -17,7 +17,7 @@ runs:
     - name: Clone Action Repository
       shell: bash
       run: |
-        git clone https://x-access-token:${{ github.token }}@github.com/UHo-TG3-WLU/print-pull-request.git /tmp/print-pr-action
+        git clone https://x-access-token:${{ github.token }}@github.com/david-zoltan/UHo-TG3-WLU/print-pull-request.git /tmp/print-pr-action
 
     - name: Build and Publish
       shell: bash
